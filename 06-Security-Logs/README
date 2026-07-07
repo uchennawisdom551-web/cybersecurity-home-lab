@@ -1,0 +1,9 @@
+# Security Logs
+
+This folder contains screenshots and log files collected during the monitoring phase of the cybersecurity home lab.
+
+The evidence will include:
+- Kibana dashboard screenshots
+- Elasticsearch indices
+- Raw Cowrie logs
+- Filebeat monitoring evidence
