@@ -1,78 +1,82 @@
-# Security Logs
+#  Centralized Security Logging & SIEM Monitoring
 
-## Overview
-
-This section documents the security logs collected during the cybersecurity home lab. Logs generated from attacks against the vulnerable web application were forwarded, indexed, and analyzed using the ELK Stack to demonstrate centralized logging and basic security monitoring.
-
----
-
-## Objectives
-
-- Capture attacker activity.
-- Monitor authentication attempts.
-- Verify successful log forwarding.
-- Analyze security events using Kibana.
-- Preserve evidence for incident investigation.
+##  Overview
+This section documents the centralization, indexing, and analysis of security logs collected across the home lab. Logs generated from active attacks against both the web application infrastructure and the SSH honeypot were forwarded to a centralized **ELK Stack** instance to simulate real-world security operations center (SOC) monitoring.
 
 ---
 
-## Log Sources
-
-The following log sources were used throughout the project:
-
-- Cowrie Honeypot
-- Apache Web Server
-- Filebeat
-- Elasticsearch
-- Kibana
-
----
-
-## Security Events Observed
-
-During testing, the following activities were observed:
-
-- SSH login attempts captured by Cowrie.
-- Username and password authentication attempts.
-- Commands executed by attackers within the honeypot.
-- Filebeat successfully forwarding log data.
-- Elasticsearch indexing incoming security logs.
-- Kibana displaying searchable log entries.
+##  Objectives
+1.
+* **Centralize Telemetry:** 
+Capture and aggregate diverse attacker activities from isolated lab environments.
+2.
+* **Audit Authentication:**
+Monitor and track unauthorized SSH and web authentication attempts.
+3.
+* **Validate Log Pipelines:**
+Verify end-to-end log forwarding, data parsing, and indexing.
+* **Visualize Security Events:** 
+Build interactive queries within Kibana to analyze attack patterns.
+* **Incident Preservation:**
+Maintain a high-fidelity audit trail for forensic investigations.
 
 ---
 
-## Evidence
+##  Architecture & Log Sources
 
-Screenshots included in this folder demonstrate:
-
-- Cowrie log activity.
-- Elasticsearch indices.
-- Kibana Discover page.
-- Filebeat service status.
-- Apache access logs (where applicable).
-
-> **Note:** Some screenshots may be recaptured in future updates to improve documentation quality.
+| Component | Role in Pipeline | Telemetry Type |
+| :--- | :--- | :--- |
+| **Cowrie Honeypot** | Target Environment | SSH Interactive Sessions & Brute-Force Attempts |
+| **Apache Web Server** | Application Host | HTTP Access & Error Logs (DVWA Interactions) |
+| **Filebeat** | Log Shipper | Lightweight Log Collection & Ingestion |
+| **Elasticsearch** | Analytics Engine | Distributed JSON Indexing & Search Backend |
+| **Kibana** | Visualization UI | Data Discovery, Threat Hunting & Dashboards |
 
 ---
 
-## Importance
+## Security Events Observed & Analyzed
 
-Security logging enables security analysts to:
+### 1. External Reconnaissance & Authentication Audits
+* **Credential Harvesting:** Captured raw username and password variations used during automated brute-force SSH attacks.
+* **Command Auditing:** Logged exact terminal commands, directory traversals, and execution attempts initiated by attackers within the honeypot container.
+* **Web Telemetry:** Monitored Apache access logs to map incoming HTTP `GET` and `POST` requests targeting vulnerable web paths.
 
-- Detect malicious activity.
-- Investigate security incidents.
-- Correlate events across multiple systems.
-- Preserve evidence for forensic analysis.
-- Improve overall visibility into system activity.
+### 2. Ingestion Pipeline Verification
+* **Log Transport:** Monitored the `filebeat` daemon to ensure consistent, uncorrupted log shipping.
+* **Data Indexing:** Verified that Elasticsearch successfully dynamically mapped incoming JSON log entries.
+* **SIEM Discovery:** Utilized the Kibana **Discover** interface to filter, parse, and review structured event data.
 
 ---
 
-## Skills Demonstrated
+##  Artifacts & Evidence
+The documentation directory contains visual evidence of the operational pipeline:
+* `[X]` **Honeypot Telemetry:**
+Raw terminal output and structured JSON captures from Cowrie.
+* `[X]` **SIEM Backend:**
+Active Elasticsearch indices proving data storage.
+* `[X]` **SOC View:** 
+Kibana Discover page captures tracking real-time attack logs.
+* `[X]` **Daemon Health:** System status verifications for active `filebeat.service` nodes.
 
-- Log Collection
-- Log Forwarding
-- Security Monitoring
-- Event Analysis
-- ELK Stack
-- Linux Administration
-- Incident Documentation
+**Documentation Note:**
+ Evidence screenshots are actively maintained and updated periodically to reflect current lab optimization cycles.
+
+---
+
+##  Engineering Takeaways
+
+Centralized log monitoring provides security teams with crucial operational advantages:
+> * **Proactive Detection:** Identifies malicious activity patterns before systemic compromise occurs.
+* **Rapid Incident Response:** Drastically reduces investigation times via cross-platform event correlation.
+* **Forensic Integrity:** Preserves a tamper-evident audit trail isolated from the compromised endpoints.
+
+---
+
+##  Core Competencies Demonstrated
+* Log Aggregation & Parsing
+* Data Pipeline Architecture
+* Security Event Monitoring (SIEM)
+* Threat Hunting Fundamentals
+* ELK Stack Engineering
+* Linux System Administration
+* Technical Documentation & Incident Reporting
