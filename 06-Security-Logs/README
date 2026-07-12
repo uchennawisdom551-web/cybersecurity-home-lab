@@ -1,28 +1,28 @@
-#  Centralized Security Logging & SIEM Monitoring
+  Centralized Security Logging & SIEM Monitoring
 
-##  Overview
+  Overview
 This section documents the centralization, indexing, and analysis of security logs collected across the home lab. Logs generated from active attacks against both the web application infrastructure and the SSH honeypot were forwarded to a centralized **ELK Stack** instance to simulate real-world security operations center (SOC) monitoring.
 
 ---
 
 ##  Objectives
 1.
-* **Centralize Telemetry:** 
+Centralize Telemetry:
 Capture and aggregate diverse attacker activities from isolated lab environments.
 2.
-* **Audit Authentication:**
+Audit Authentication:
 Monitor and track unauthorized SSH and web authentication attempts.
 3.
 * **Validate Log Pipelines:**
 Verify end-to-end log forwarding, data parsing, and indexing.
-* **Visualize Security Events:** 
+Visualize Security Events:
 Build interactive queries within Kibana to analyze attack patterns.
-* **Incident Preservation:**
+Incident Preservation:
 Maintain a high-fidelity audit trail for forensic investigations.
 
 ---
 
-##  Architecture & Log Sources
+ Architecture & Log Sources
 
 | Component | Role in Pipeline | Telemetry Type |
 | :--- | :--- | :--- |
@@ -33,46 +33,65 @@ Maintain a high-fidelity audit trail for forensic investigations.
 | **Kibana** | Visualization UI | Data Discovery, Threat Hunting & Dashboards |
 
 ---
+Security Events Observed & Analyzed
 
-## Security Events Observed & Analyzed
+1. External Reconnaissance & Authentication Audits
 
-### 1. External Reconnaissance & Authentication Audits
-* **Credential Harvesting:** Captured raw username and password variations used during automated brute-force SSH attacks.
-* **Command Auditing:** Logged exact terminal commands, directory traversals, and execution attempts initiated by attackers within the honeypot container.
-* **Web Telemetry:** Monitored Apache access logs to map incoming HTTP `GET` and `POST` requests targeting vulnerable web paths.
+*Credential Harvesting:
+Captured raw username and password variations used during automated brute-force SSH attacks.
 
-### 2. Ingestion Pipeline Verification
-* **Log Transport:** Monitored the `filebeat` daemon to ensure consistent, uncorrupted log shipping.
-* **Data Indexing:** Verified that Elasticsearch successfully dynamically mapped incoming JSON log entries.
-* **SIEM Discovery:** Utilized the Kibana **Discover** interface to filter, parse, and review structured event data.
+Command Auditing:
+ Logged exact terminal commands, directory traversals, and execution attempts initiated by attackers within the honeypot container.
+Web Telemetry:
+Monitored Apache access logs to map incoming HTTP `GET` and `POST` requests targeting vulnerable web paths.
 
----
+ 2. Ingestion Pipeline Verification
+a
+Log Transport:
+Monitored the `filebeat` daemon to ensure consistent, uncorrupted log shipping.
+b
+Data Indexing: 
+Verified that Elasticsearch successfully dynamically mapped incoming JSON log entries.
+c
+SIEM Discovery:
+Utilized the Kibana **Discover** interface to filter, parse, and review structured event data.
 
-##  Artifacts & Evidence
+
+  
+3. Artifacts & Evidence
 The documentation directory contains visual evidence of the operational pipeline:
-* `[X]` **Honeypot Telemetry:**
+a
+Honeypot Telemetry:
 Raw terminal output and structured JSON captures from Cowrie.
-* `[X]` **SIEM Backend:**
+b
+SIEM Backend:
 Active Elasticsearch indices proving data storage.
-* `[X]` **SOC View:** 
+c
+SOC View:
 Kibana Discover page captures tracking real-time attack logs.
-* `[X]` **Daemon Health:** System status verifications for active `filebeat.service` nodes.
+d
+Daemon Health: 
+System status verifications for active `filebeat.service` nodes.
+e
+Documentation Note:
+Evidence screenshots are actively maintained and updated periodically to reflect current lab optimization cycles.
 
-**Documentation Note:**
- Evidence screenshots are actively maintained and updated periodically to reflect current lab optimization cycles.
 
----
-
-##  Engineering Takeaways
+4. Engineering Takeaways
 
 Centralized log monitoring provides security teams with crucial operational advantages:
-> * **Proactive Detection:** Identifies malicious activity patterns before systemic compromise occurs.
-* **Rapid Incident Response:** Drastically reduces investigation times via cross-platform event correlation.
-* **Forensic Integrity:** Preserves a tamper-evident audit trail isolated from the compromised endpoints.
+a
+Proactive Detection:
+Identifies malicious activity patterns before systemic compromise occurs.
+b
+Rapid Incident Response:
+Drastically reduces investigation times via cross-platform event correlation.
+c
+Forensic Integrity:
+Preserves a tamper-evident audit trail isolated from the compromised endpoints.
 
 ---
-
-##  Core Competencies Demonstrated
+Core Competencies Demonstrated
 * Log Aggregation & Parsing
 * Data Pipeline Architecture
 * Security Event Monitoring (SIEM)
