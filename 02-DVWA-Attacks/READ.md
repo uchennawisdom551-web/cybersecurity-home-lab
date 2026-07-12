@@ -38,7 +38,7 @@ Successfully breached input validation limitations via the web UI, forcing the a
 
 b.
 ​Cross-Site Scripting (XSS):
- Injected malicious JavaScript payloads that executed directly within the client-side browser environment, demonstrating insufficient output encoding protections.
+ Injected input payloads that executed directly within the client-side browser environment, demonstrating insufficient output encoding protections.
 
 
 
