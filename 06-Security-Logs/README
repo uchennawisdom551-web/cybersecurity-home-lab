@@ -1,9 +1,78 @@
 # Security Logs
 
-This folder contains screenshots and log files collected during the monitoring phase of the cybersecurity home lab.
+## Overview
 
-The evidence will include:
-- Kibana dashboard screenshots
-- Elasticsearch indices
-- Raw Cowrie logs
-- Filebeat monitoring evidence
+This section documents the security logs collected during the cybersecurity home lab. Logs generated from attacks against the vulnerable web application were forwarded, indexed, and analyzed using the ELK Stack to demonstrate centralized logging and basic security monitoring.
+
+---
+
+## Objectives
+
+- Capture attacker activity.
+- Monitor authentication attempts.
+- Verify successful log forwarding.
+- Analyze security events using Kibana.
+- Preserve evidence for incident investigation.
+
+---
+
+## Log Sources
+
+The following log sources were used throughout the project:
+
+- Cowrie Honeypot
+- Apache Web Server
+- Filebeat
+- Elasticsearch
+- Kibana
+
+---
+
+## Security Events Observed
+
+During testing, the following activities were observed:
+
+- SSH login attempts captured by Cowrie.
+- Username and password authentication attempts.
+- Commands executed by attackers within the honeypot.
+- Filebeat successfully forwarding log data.
+- Elasticsearch indexing incoming security logs.
+- Kibana displaying searchable log entries.
+
+---
+
+## Evidence
+
+Screenshots included in this folder demonstrate:
+
+- Cowrie log activity.
+- Elasticsearch indices.
+- Kibana Discover page.
+- Filebeat service status.
+- Apache access logs (where applicable).
+
+> **Note:** Some screenshots may be recaptured in future updates to improve documentation quality.
+
+---
+
+## Importance
+
+Security logging enables security analysts to:
+
+- Detect malicious activity.
+- Investigate security incidents.
+- Correlate events across multiple systems.
+- Preserve evidence for forensic analysis.
+- Improve overall visibility into system activity.
+
+---
+
+## Skills Demonstrated
+
+- Log Collection
+- Log Forwarding
+- Security Monitoring
+- Event Analysis
+- ELK Stack
+- Linux Administration
+- Incident Documentation
