@@ -5,7 +5,7 @@ Deployed a controlled home lab environment to test, exploit, and analyze common 
 
 ---
 
-##  Tools & Environment
+##  Tools and Environment
 * **Host OS:** Debian
 * **Attacking OS:** Kali Linux
 * **Containerization:** Docker
@@ -14,7 +14,7 @@ Deployed a controlled home lab environment to test, exploit, and analyze common 
 
 ---
 
-##  Lab Deployment & Execution
+##  Lab Deployment and Execution
 
 ### 1. Setting Up the Target
 The DVWA web server was deployed on the Debian host machine using Docker:
